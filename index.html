@@ -1,0 +1,1888 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wellage — Care Closer, Live Better | ดูแลใกล้ชิด ในทุกช่วงชีวิต</title>
+  <meta name="description" content="Wellage ระบบดูแลสุขภาพและความปลอดภัยผู้สูงอายุอัจฉริยะ ติดตามตำแหน่ง GPS กล้องวงจรปิด วัดชีพจรและความดัน แจ้งเตือนเหตุฉุกเฉินตลอด 24 ชั่วโมง" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sky-50: #f0f9ff;
+      --sky-100: #e0f2fe;
+      --sky-200: #bae6fd;
+      --sky-300: #7dd3fc;
+      --sky-400: #38bdf8;
+      --sky-500: #0ea5e9;
+      --sky-600: #0284c7;
+      --sky-700: #0369a1;
+      --sky-800: #075985;
+      --sky-900: #0c4a6e;
+      --white: #ffffff;
+      --slate-50: #f8fafc;
+      --slate-100: #f1f5f9;
+      --slate-200: #e2e8f0;
+      --slate-400: #94a3b8;
+      --slate-500: #64748b;
+      --slate-700: #334155;
+      --slate-900: #0f172a;
+      --emerald-100: #d1fae5;
+      --amber-100: #fef3c7;
+      --red-600: #dc2626;
+      --red-500: #ef4444;
+      --shadow-soft: 0 12px 32px -6px rgba(2, 132, 199, 0.12);
+      --shadow-phone: 0 28px 60px -12px rgba(3, 105, 161, 0.24), 0 0 0 10px #ffffff, 0 0 0 12px #bae6fd;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Prompt', 'Sarabun', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(180deg, var(--sky-50) 0%, var(--white) 35%, var(--sky-50) 100%);
+      color: var(--slate-900);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--sky-100);
+    }
+    .nav-container {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--sky-800);
+    }
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .brand-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--sky-700);
+      line-height: 1.1;
+    }
+    .brand-sub {
+      font-size: 0.72rem;
+      color: var(--sky-500);
+      font-weight: 500;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--slate-700);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--sky-600);
+    }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--sky-500), var(--sky-600));
+      color: var(--white) !important;
+      padding: 9px 18px;
+      border-radius: 999px;
+      font-weight: 600 !important;
+      box-shadow: 0 6px 16px rgba(14, 165, 233, 0.28);
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.86rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(14, 165, 233, 0.36);
+    }
+
+    /* Image Upload / Change Overlay Button */
+    .img-edit-btn {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 15;
+      background: rgba(255, 255, 255, 0.94);
+      color: var(--sky-700);
+      border: 1.5px solid var(--sky-300);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(2, 132, 199, 0.18);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .img-edit-btn:hover {
+      background: var(--sky-600);
+      color: var(--white);
+      border-color: var(--sky-600);
+      transform: translateY(-1px);
+    }
+
+    /* Hero Section */
+    .hero {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 52px 24px 64px;
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      border: 1px solid var(--sky-200);
+      color: var(--sky-700);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+      box-shadow: 0 4px 12px rgba(14, 165, 233, 0.08);
+    }
+    .pulse-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--sky-500);
+      box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.2);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.25); opacity: 0.7; }
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 4vw, 3.25rem);
+      font-weight: 700;
+      color: var(--sky-900);
+      line-height: 1.18;
+      margin-bottom: 12px;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--sky-500), var(--sky-700));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-tagline {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--sky-600);
+      margin-bottom: 14px;
+    }
+    .hero p {
+      color: var(--slate-500);
+      font-size: 1.02rem;
+      max-width: 560px;
+      margin-bottom: 26px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--sky-500), var(--sky-600));
+      color: var(--white);
+      padding: 13px 24px;
+      border-radius: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.95rem;
+      box-shadow: 0 10px 24px rgba(2, 132, 199, 0.26);
+      transition: all 0.2s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(2, 132, 199, 0.34);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      color: var(--sky-700);
+      border: 1.5px solid var(--sky-200);
+      padding: 13px 22px;
+      border-radius: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover {
+      background: var(--sky-50);
+      border-color: var(--sky-400);
+    }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      background: var(--white);
+      border: 1px solid var(--sky-100);
+      border-radius: 18px;
+      padding: 18px 20px;
+      box-shadow: var(--shadow-soft);
+    }
+    .stat-item strong {
+      display: block;
+      font-size: 1.35rem;
+      color: var(--sky-600);
+      font-weight: 700;
+    }
+    .stat-item span {
+      font-size: 0.82rem;
+      color: var(--slate-500);
+      word-break: keep-all;
+    }
+
+    /* Hero Right Visual */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .hero-device-frame {
+      position: relative;
+      width: 100%;
+      border-radius: 28px;
+      overflow: hidden;
+      background: linear-gradient(145deg, var(--white), var(--sky-100));
+      border: 2px solid var(--sky-200);
+      box-shadow: 0 24px 50px rgba(2, 132, 199, 0.16);
+    }
+    .hero-device-frame img {
+      width: 100%;
+      height: 390px;
+      object-fit: cover;
+      display: block;
+    }
+    .floating-status {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      right: 16px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--sky-200);
+      border-radius: 18px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    }
+
+    /* Section Base */
+    .section {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 64px 24px;
+    }
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 42px;
+    }
+    .section-kicker {
+      display: inline-block;
+      color: var(--sky-600);
+      background: var(--sky-100);
+      padding: 4px 14px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .section-header h2 {
+      font-size: clamp(1.7rem, 3vw, 2.3rem);
+      color: var(--sky-900);
+      margin-bottom: 10px;
+    }
+    .section-header p {
+      color: var(--slate-500);
+      font-size: 0.98rem;
+    }
+
+    /* Interactive App Showcase Layout */
+    .app-showcase-grid {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .phone-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .phone-frame {
+      width: 356px;
+      height: 710px;
+      background: var(--white);
+      border-radius: 44px;
+      box-shadow: var(--shadow-phone);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      border: 1px solid var(--sky-200);
+    }
+    .phone-status-bar {
+      height: 36px;
+      padding: 10px 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--slate-700);
+      flex-shrink: 0;
+      z-index: 5;
+    }
+    .phone-notch {
+      width: 105px;
+      height: 20px;
+      background: var(--sky-900);
+      border-radius: 999px;
+    }
+    .phone-screen {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px 16px 16px;
+      background: linear-gradient(180deg, var(--sky-50) 0%, var(--white) 40%);
+      display: flex;
+      flex-direction: column;
+    }
+    .phone-screen::-webkit-scrollbar {
+      width: 4px;
+    }
+    .phone-screen::-webkit-scrollbar-thumb {
+      background: var(--sky-200);
+      border-radius: 4px;
+    }
+    .phone-screen.sos-mode {
+      background: linear-gradient(180deg, #dc2626 0%, #b91c1c 100%);
+      color: var(--white);
+    }
+
+    .app-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+    .app-back-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      border: 1px solid var(--sky-200);
+      background: var(--white);
+      color: var(--sky-700);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .app-screen-title {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--sky-900);
+    }
+    .bell-btn {
+      position: relative;
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background: var(--white);
+      border: 1px solid var(--sky-200);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--sky-600);
+    }
+    .bell-badge {
+      position: absolute;
+      top: -3px;
+      right: -3px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: var(--red-500);
+      color: var(--white);
+      font-size: 0.62rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .senior-card {
+      background: var(--white);
+      border: 1px solid var(--sky-100);
+      border-radius: 20px;
+      padding: 14px;
+      box-shadow: 0 8px 20px rgba(2, 132, 199, 0.08);
+      margin-bottom: 14px;
+    }
+    .senior-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .senior-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--sky-100);
+      border: 2px solid var(--sky-400);
+      flex-shrink: 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .status-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 2px 10px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+    .status-normal {
+      background: var(--emerald-100);
+      color: #065f46;
+    }
+    .status-moving {
+      background: var(--amber-100);
+      color: #92400e;
+    }
+    .status-alert {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+    .battery-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--slate-500);
+      gap: 8px;
+    }
+    .battery-bar {
+      flex: 1;
+      height: 7px;
+      background: var(--sky-100);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .battery-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--sky-400), var(--sky-600));
+      border-radius: 999px;
+    }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 11px;
+      margin-bottom: 14px;
+    }
+    .quick-tile {
+      background: var(--white);
+      border: 1px solid var(--sky-100);
+      border-radius: 18px;
+      padding: 16px 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 4px 14px rgba(14, 165, 233, 0.06);
+    }
+    .quick-tile:hover {
+      border-color: var(--sky-400);
+      background: var(--sky-50);
+      transform: translateY(-2px);
+    }
+    .tile-icon {
+      width: 42px;
+      height: 42px;
+      margin: 0 auto 8px;
+      border-radius: 14px;
+      background: var(--sky-100);
+      color: var(--sky-600);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .quick-tile h4 {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--sky-900);
+      line-height: 1.3;
+    }
+    .quick-tile span {
+      display: block;
+      font-size: 0.68rem;
+      color: var(--slate-500);
+      margin-top: 2px;
+    }
+
+    .app-bottom-nav {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: var(--white);
+      border-top: 1px solid var(--sky-100);
+      padding: 8px 6px 12px;
+      flex-shrink: 0;
+    }
+    .bottom-tab {
+      border: none;
+      background: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      font-family: inherit;
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: var(--slate-400);
+      cursor: pointer;
+    }
+    .bottom-tab.active {
+      color: var(--sky-600);
+      font-weight: 700;
+    }
+
+    .screen-control-panel {
+      background: var(--white);
+      border: 1px solid var(--sky-100);
+      border-radius: 26px;
+      padding: 28px;
+      box-shadow: var(--shadow-soft);
+    }
+    .screen-control-panel h3 {
+      font-size: 1.3rem;
+      color: var(--sky-900);
+      margin-bottom: 6px;
+    }
+    .screen-control-panel > p {
+      font-size: 0.92rem;
+      color: var(--slate-500);
+      margin-bottom: 20px;
+    }
+    .screen-pills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .screen-pill {
+      padding: 11px 12px;
+      border-radius: 14px;
+      border: 1.5px solid var(--sky-100);
+      background: var(--sky-50);
+      color: var(--sky-900);
+      font-family: inherit;
+      font-size: 0.83rem;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .screen-pill:hover {
+      border-color: var(--sky-400);
+      background: var(--white);
+    }
+    .screen-pill.active {
+      background: linear-gradient(135deg, var(--sky-500), var(--sky-600));
+      color: var(--white);
+      border-color: var(--sky-600);
+      box-shadow: 0 8px 18px rgba(14, 165, 233, 0.25);
+    }
+    .screen-pill.sos-pill {
+      border-color: #fecaca;
+      background: #fef2f2;
+      color: #b91c1c;
+    }
+    .screen-pill.sos-pill.active {
+      background: #dc2626;
+      color: var(--white);
+      border-color: #dc2626;
+    }
+    .pill-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 7px;
+      background: rgba(255, 255, 255, 0.75);
+      color: var(--sky-700);
+      font-size: 0.74rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .screen-pill.active .pill-num {
+      background: rgba(255, 255, 255, 0.22);
+      color: var(--white);
+    }
+
+    .active-screen-info {
+      background: var(--sky-50);
+      border: 1px solid var(--sky-200);
+      border-radius: 18px;
+      padding: 18px 20px;
+    }
+    .active-screen-info h4 {
+      color: var(--sky-800);
+      font-size: 1.02rem;
+      margin-bottom: 4px;
+    }
+    .active-screen-info p {
+      color: var(--slate-600);
+      font-size: 0.9rem;
+    }
+
+    /* Wearable Device Section */
+    .wearable-box {
+      background: linear-gradient(135deg, var(--sky-600) 0%, var(--sky-800) 100%);
+      border-radius: 32px;
+      padding: 44px;
+      color: var(--white);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      box-shadow: 0 24px 50px rgba(3, 105, 161, 0.24);
+    }
+    .wearable-image-card {
+      position: relative;
+      background: var(--white);
+      border-radius: 24px;
+      padding: 14px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+    }
+    .wearable-image-card img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      border-radius: 16px;
+      display: block;
+    }
+    .wearable-specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 22px;
+    }
+    .spec-card {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 16px;
+      padding: 14px 16px;
+      backdrop-filter: blur(8px);
+    }
+    .spec-card strong {
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 3px;
+    }
+    .spec-card span {
+      font-size: 0.8rem;
+      color: var(--sky-100);
+    }
+
+    /* Full 12-Screen Blueprint Showcase */
+    .blueprint-card {
+      background: var(--white);
+      border: 1px solid var(--sky-200);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 32px;
+      align-items: center;
+    }
+    .blueprint-img-wrap {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--sky-100);
+      background: var(--sky-50);
+    }
+    .blueprint-img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Feature Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .feature-card {
+      background: var(--white);
+      border: 1px solid var(--sky-100);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(2, 132, 199, 0.06);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--sky-300);
+    }
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: var(--sky-100);
+      color: var(--sky-600);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .feature-card h3 {
+      font-size: 1.08rem;
+      color: var(--sky-900);
+      margin-bottom: 6px;
+    }
+    .feature-card p {
+      font-size: 0.88rem;
+      color: var(--slate-500);
+    }
+
+    /* App Screen Helpers */
+    .mini-card {
+      background: var(--white);
+      border: 1px solid var(--sky-100);
+      border-radius: 16px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.05);
+    }
+    .mini-btn {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: none;
+      background: linear-gradient(135deg, var(--sky-500), var(--sky-600));
+      color: var(--white);
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .mini-btn-outline {
+      width: 100%;
+      padding: 9px 12px;
+      border-radius: 12px;
+      border: 1.5px solid var(--sky-200);
+      background: var(--white);
+      color: var(--sky-700);
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .toggle-switch {
+      width: 40px;
+      height: 22px;
+      border-radius: 999px;
+      background: var(--slate-200);
+      position: relative;
+      cursor: pointer;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .toggle-switch.on {
+      background: var(--sky-500);
+    }
+    .toggle-switch::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--white);
+      transition: transform 0.2s;
+    }
+    .toggle-switch.on::after {
+      transform: translateX(18px);
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--sky-900);
+      color: var(--white);
+      padding: 13px 20px;
+      border-radius: 14px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.25);
+      z-index: 100;
+      opacity: 0;
+      transform: translateY(16px);
+      pointer-events: none;
+      transition: all 0.25s;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    footer {
+      background: var(--white);
+      border-top: 1px solid var(--sky-100);
+      padding: 36px 24px;
+      margin-top: 40px;
+    }
+    .footer-inner {
+      max-width: 1220px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      color: var(--slate-500);
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero, .app-showcase-grid, .wearable-box, .blueprint-card {
+        grid-template-columns: 1fr;
+      }
+      .screen-pills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .features-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+    @media (max-width: 600px) {
+      .features-grid, .hero-stats, .wearable-specs {
+        grid-template-columns: 1fr;
+      }
+      .phone-frame {
+        width: 100%;
+        max-width: 356px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hidden File Inputs for Changing Images Live -->
+  <input type="file" id="picker-device" accept="image/*" style="display:none" onchange="onSelectCustomImage(event, 'device')" />
+  <input type="file" id="picker-blueprint" accept="image/*" style="display:none" onchange="onSelectCustomImage(event, 'blueprint')" />
+
+  <!-- Top Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#home" class="brand">
+        <svg width="42" height="42" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <rect width="48" height="48" rx="14" fill="#E0F2FE"/>
+          <path d="M24 38C24 38 10 29.4 10 18.8C10 14.3 13.5 11 17.8 11C20.5 11 22.8 12.3 24 14.4C25.2 12.3 27.5 11 30.2 11C34.5 11 38 14.3 38 18.8C38 29.4 24 38 24 38Z" stroke="#0284C7" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M18 22L24 28L30 22M24 16V28" stroke="#0EA5E9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="brand-text">
+          <span class="brand-name">Wellage</span>
+          <span class="brand-sub">Care Closer, Live Better</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#home">หน้าหลัก</a></li>
+        <li><a href="#live-demo">ทดลองใช้งานแอป (12 หน้าจอ)</a></li>
+        <li><a href="#wearable">อุปกรณ์ Wellage</a></li>
+        <li><a href="#blueprint">ภาพรวมระบบ</a></li>
+        <li>
+          <button class="nav-cta" onclick="exportStandaloneHtml()">
+            💾 บันทึกไฟล์อัปขึ้น GitHub
+          </button>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div>
+      <div class="badge-pill">
+        <span class="pulse-dot"></span>
+        ดูแลใกล้ชิด ในทุกช่วงชีวิต • ระบบออนไลน์ 24 ชม.
+      </div>
+      <h1>อุ่นใจทุกวินาทีด้วย <span>Wellage</span></h1>
+      <div class="hero-tagline">Care Closer, Live Better — ดูแลใกล้ชิด ในทุกช่วงชีวิต</div>
+      <p>
+        แพลตฟอร์มและอุปกรณ์สวมใส่อัจฉริยะสำหรับดูแลผู้สูงอายุและคนที่คุณรัก รวมระบบติดตามตำแหน่ง GPS แบบเรียลไทม์ กล้องวงจรปิด CCTV วัดชีพจรและความดัน แจ้งเตือนออกนอกพื้นที่ และแจ้งเตือนเหตุฉุกเฉินทันทีในแอปเดียว
+      </p>
+      <div class="hero-actions">
+        <a href="#live-demo" class="btn-primary">
+          ทดลองกดใช้งานแอป Wellage ทั้ง 12 หน้าจอ
+        </a>
+        <button class="btn-secondary" onclick="document.getElementById('picker-device').click()">
+          📷 เปลี่ยนรูปนาฬิกา/อุปกรณ์
+        </button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <strong>12 หน้าจอ</strong>
+          <span>ระบบดูแลครบวงจรในแอปเดียว</span>
+        </div>
+        <div class="stat-item">
+          <strong>&lt; 3 วินาที</strong>
+          <span>แจ้งเตือนเหตุฉุกเฉินและการล้ม</span>
+        </div>
+        <div class="stat-item">
+          <strong>24/7 Live</strong>
+          <span>ติดตามพิกัด &amp; สุขภาพตลอดเวลา</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-device-frame">
+        <button class="img-edit-btn" onclick="document.getElementById('picker-device').click()">
+          📷 เปลี่ยนรูปภาพ
+        </button>
+        <img
+          id="hero-watch-img"
+          src="./watch.jpg"
+          data-fallbacks="./watch.png,./watch.webp,./device.jpg,./device.png,./device.webp,./5c3eac19-974a-4893-b482-b42c07184011.webp"
+          alt="อุปกรณ์อัจฉริยะ Wellage Smart Wearable"
+          onerror="handleSmartImageFallback(this, 'device')"
+        />
+        <div class="floating-status">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:42px;height:42px;border-radius:12px;background:#e0f2fe;color:#0284c7;display:flex;align-items:center;justify-content:center;font-weight:700;">
+              ♥
+            </div>
+            <div>
+              <strong style="display:block;font-size:0.92rem;color:#0c4a6e;">Wellage Smart Wearable เชื่อมต่อแล้ว</strong>
+              <span style="font-size:0.78rem;color:#64748b;">คุณสมชาย (82 ปี) • ชีพจร 72 ครั้ง/นาที • แบตเตอรี่ 78%</span>
+            </div>
+          </div>
+          <span class="status-chip status-normal">● ปกติ</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive 12-Screen Mobile App Simulator -->
+  <section id="live-demo" class="section">
+    <div class="section-header">
+      <span class="section-kicker">INTERACTIVE 12-SCREEN SHOWCASE</span>
+      <h2>หน้าจอแอปพลิเคชัน Wellage เหมือนจริงครบทั้ง 12 หน้า</h2>
+      <p>คลิกเลือกเมนูบนหน้าจอมือถือจำลอง หรือกดปุ่มเลือกหน้าจอทางด้านขวา เพื่อทดสอบทุกฟีเจอร์ได้ทันที</p>
+    </div>
+
+    <div class="app-showcase-grid">
+      <!-- Phone Frame -->
+      <div class="phone-wrapper">
+        <div class="phone-frame">
+          <div class="phone-status-bar" id="phone-status-bar">
+            <span>9:41</span>
+            <div class="phone-notch"></div>
+            <span>5G • 78%</span>
+          </div>
+
+          <div class="phone-screen" id="phone-screen"></div>
+
+          <div class="app-bottom-nav" id="app-bottom-nav">
+            <button class="bottom-tab active" onclick="switchScreen(1)">
+              <span>🏠</span>
+              <span>หน้าหลัก</span>
+            </button>
+            <button class="bottom-tab" onclick="switchScreen(11)">
+              <span>🔔</span>
+              <span>ประวัติ</span>
+            </button>
+            <button class="bottom-tab" onclick="switchScreen(9)">
+              <span>⚙️</span>
+              <span>ตั้งค่า</span>
+            </button>
+            <button class="bottom-tab" onclick="switchScreen(7)">
+              <span>☰</span>
+              <span>เพิ่มเติม</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Control Panel -->
+      <div class="screen-control-panel">
+        <h3>เลือกดูหน้าจอการทำงานทั้ง 12 หน้า</h3>
+        <p>ครบทุกฟังก์ชันตามต้นแบบ Wellage ในโทนสีฟ้า – ขาว สบายตา ใช้งานง่ายสำหรับทุกคนในครอบครัว</p>
+
+        <div class="screen-pills-grid" id="screen-pills-grid">
+          <button class="screen-pill active" onclick="switchScreen(1)"><span class="pill-num">1</span>หน้าหลัก</button>
+          <button class="screen-pill" onclick="switchScreen(2)"><span class="pill-num">2</span>ตำแหน่ง GPS</button>
+          <button class="screen-pill" onclick="switchScreen(3)"><span class="pill-num">3</span>กล้องวงจรปิด</button>
+          <button class="screen-pill" onclick="switchScreen(4)"><span class="pill-num">4</span>ออกนอกพื้นที่</button>
+          <button class="screen-pill" onclick="switchScreen(5)"><span class="pill-num">5</span>วัดสุขภาพ</button>
+          <button class="screen-pill sos-pill" onclick="switchScreen(6)"><span class="pill-num">6</span>เหตุฉุกเฉิน</button>
+          <button class="screen-pill" onclick="switchScreen(7)"><span class="pill-num">7</span>เมนูเพิ่มเติม</button>
+          <button class="screen-pill" onclick="switchScreen(8)"><span class="pill-num">8</span>โรงพยาบาลใกล้เคียง</button>
+          <button class="screen-pill" onclick="switchScreen(9)"><span class="pill-num">9</span>ตั้งค่าแจ้งเตือน</button>
+          <button class="screen-pill" onclick="switchScreen(10)"><span class="pill-num">10</span>ถอดอุปกรณ์</button>
+          <button class="screen-pill" onclick="switchScreen(11)"><span class="pill-num">11</span>การแจ้งเตือน</button>
+          <button class="screen-pill" onclick="switchScreen(12)"><span class="pill-num">12</span>ดูแลหลายคน</button>
+        </div>
+
+        <div class="active-screen-info" id="active-screen-info">
+          <h4>หน้าจอที่ 1: หน้าหลัก (Dashboard ดูแลผู้สูงอายุ)</h4>
+          <p>แสดงสถานะสุขภาพปัจจุบันของคุณสมชาย (อายุ 82 ปี) สถานะปกติ ระดับแบตเตอรี่อุปกรณ์ 78% พร้อมปุ่มลัดเข้าถึง GPS, กล้องวงจรปิด, แจ้งเตือนออกนอกพื้นที่ และวัดชีพจร/ความดัน</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wearable Device Showcase -->
+  <section id="wearable" class="section">
+    <div class="wearable-box">
+      <div class="wearable-image-card">
+        <button class="img-edit-btn" onclick="document.getElementById('picker-device').click()">
+          📷 เปลี่ยนรูปภาพ
+        </button>
+        <img
+          id="section-watch-img"
+          src="./watch.jpg"
+          data-fallbacks="./watch.png,./watch.webp,./device.jpg,./device.png,./device.webp,./5c3eac19-974a-4893-b482-b42c07184011.webp"
+          alt="อุปกรณ์สวมใส่อัจฉริยะ Wellage"
+          onerror="handleSmartImageFallback(this, 'device')"
+        />
+      </div>
+      <div>
+        <span style="display:inline-block;background:rgba(255,255,255,0.16);padding:5px 14px;border-radius:999px;font-size:0.82rem;font-weight:600;margin-bottom:12px;">
+          WELLAGE SMART HARDWARE
+        </span>
+        <h2 style="font-size:2rem;line-height:1.25;margin-bottom:14px;">
+          อุปกรณ์อัจฉริยะ Wellage เชื่อมต่อข้อมูลสุขภาพตลอด 24 ชั่วโมง
+        </h2>
+        <p style="color:#e0f2fe;font-size:0.96rem;">
+          ออกแบบตามหลักสรีรศาสตร์ สวมใส่สบาย น้ำหนักเบา ตรวจจับค่าชีพจร ความดัน การเคลื่อนไหว และการล้มได้แม่นยำ พร้อมระบบแจ้งเตือนทันทีหากมีการถอดอุปกรณ์ออก
+        </p>
+        <div class="wearable-specs">
+          <div class="spec-card">
+            <strong>ตรวจจับการล้มอัตโนมัติ</strong>
+            <span>ส่งสัญญาณ SOS ถึงญาติและโรงพยาบาลทันที</span>
+          </div>
+          <div class="spec-card">
+            <strong>แจ้งเตือนเมื่อถอดอุปกรณ์</strong>
+            <span>ระบุเวลาและพิกัดล่าสุดที่ถอดอุปกรณ์</span>
+          </div>
+          <div class="spec-card">
+            <strong>วัดชีพจร &amp; ความดัน</strong>
+            <span>บันทึกประวัติสุขภาพอัตโนมัติบนแอป</span>
+          </div>
+          <div class="spec-card">
+            <strong>พิกัด GPS แม่นยำสูง</strong>
+            <span>กำหนดรัศมีพื้นที่ปลอดภัย (Geofence) ได้</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Full 12-Screen UI Blueprint Showcase -->
+  <section id="blueprint" class="section">
+    <div class="blueprint-card">
+      <div class="blueprint-img-wrap">
+        <button class="img-edit-btn" onclick="document.getElementById('picker-blueprint').click()">
+          📷 เปลี่ยนรูปภาพ UI
+        </button>
+        <img
+          id="ui-blueprint-img"
+          src="./ui.jpg"
+          data-fallbacks="./ui.png,./ui.webp,./unnamed (1).webp"
+          alt="ภาพรวมการออกแบบ UI แอปพลิเคชัน Wellage 12 หน้าจอ"
+          onerror="handleSmartImageFallback(this, 'blueprint')"
+        />
+      </div>
+      <div>
+        <span class="section-kicker">COMPLETE SYSTEM ARCHITECTURE</span>
+        <h3 style="font-size:1.6rem;color:#0c4a6e;margin-bottom:12px;">
+          ออกแบบครบทั้ง 12 โมดูลเพื่อการดูแลผู้สูงอายุอย่างสมบูรณ์
+        </h3>
+        <p style="color:#64748b;font-size:0.94rem;margin-bottom:18px;">
+          ทุกหน้าจอในระบบ Wellage ถูกพัฒนาให้ตัวอักษรอ่านง่าย ปุ่มกดชัดเจน ลดความซับซ้อน และปรับโทนสีเป็น <strong>สีฟ้า – ขาว</strong> เพื่อความรู้สึกสะอาด ปลอดภัย และน่าเชื่อถือทางการแพทย์
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;">
+          <button class="btn-primary" onclick="exportStandaloneHtml()">
+            💾 บันทึกไฟล์พร้อมรูป (สำหรับ GitHub)
+          </button>
+          <button class="btn-secondary" onclick="resetCustomImages()">
+            ↺ รีเซ็ตรูปเดิม
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Features Grid -->
+  <section id="features" class="section">
+    <div class="section-header">
+      <span class="section-kicker">KEY CAPABILITIES</span>
+      <h2>ครบทุกฟีเจอร์สำคัญสำหรับครอบครัว</h2>
+      <p>ระบบทำงานประสานกันระหว่างอุปกรณ์สวมใส่และแอปพลิเคชันบนสมาร์ทโฟน</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📍</div>
+        <h3>ติดตามตำแหน่ง GPS แบบเรียลไทม์</h3>
+        <p>ดูตำแหน่งปัจจุบัน นำทางไปหาผู้สูงอายุ และแชร์พิกัดให้คนในครอบครัวได้ทันที</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📹</div>
+        <h3>กล้องวงจรปิด CCTV ออนไลน์</h3>
+        <p>ดูภาพสดห้องนั่งเล่น ห้องนอน และหน้าบ้าน พร้อมปุ่มถ่ายภาพและบันทึกวิดีโอ</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🛡️</div>
+        <h3>แจ้งเตือนออกนอกพื้นที่ปลอดภัย</h3>
+        <p>ตั้งค่ารัศมีบ้าน โรงพยาบาล และสวนสาธารณะ แจ้งเตือนผ่านแอปและ SMS ทันที</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💓</div>
+        <h3>วัดชีพจรและความดันโลหิต</h3>
+        <p>ติดตามค่าหัวใจและความดันรายวัน พร้อมกราฟและตารางประวัติย้อนหลัง</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🚨</div>
+        <h3>แจ้งเตือนเหตุฉุกเฉิน &amp; โรงพยาบาล</h3>
+        <p>โทรฉุกเฉินหาโรงพยาบาลใกล้เคียง พร้อมนำทางไปยังโรงพยาบาลที่ใกล้ที่สุดทันที</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👨‍👩‍👧‍👦</div>
+        <h3>ดูแลผู้สูงอายุหลายคนพร้อมกัน</h3>
+        <p>สลับดูสถานะของคุณสมชาย คุณสมหญิง และคุณตาประยูรได้ในบัญชีเดียว</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <strong style="color:#0369a1;">Wellage</strong> — Care Closer, Live Better • ดูแลใกล้ชิด ในทุกช่วงชีวิต
+      </div>
+      <div>
+        Single-Page Showcase Ready for GitHub Pages • Zero-404 Architecture
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast">ดำเนินการเรียบร้อยแล้ว</div>
+
+  <script>
+    // 1. Live Image Picker + LocalStorage Persistence + Self-Contained GitHub HTML Exporter
+    function applySavedImages() {
+      try {
+        const savedDevice = localStorage.getItem('wellage_custom_device_img');
+        const savedBlueprint = localStorage.getItem('wellage_custom_blueprint_img');
+        if (savedDevice) {
+          document.getElementById('hero-watch-img').src = savedDevice;
+          document.getElementById('section-watch-img').src = savedDevice;
+        }
+        if (savedBlueprint) {
+          document.getElementById('ui-blueprint-img').src = savedBlueprint;
+        }
+      } catch (e) {}
+    }
+
+    function onSelectCustomImage(event, targetType) {
+      const file = event.target.files && event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          // Optimize image size gently so it stays fast and fits cleanly inside index.html
+          const maxDim = 1280;
+          let w = img.width;
+          let h = img.height;
+          if (w > maxDim || h > maxDim) {
+            if (w > h) {
+              h = Math.round((h * maxDim) / w);
+              w = maxDim;
+            } else {
+              w = Math.round((w * maxDim) / h);
+              h = maxDim;
+            }
+          }
+          const canvas = document.createElement('canvas');
+          canvas.width = w;
+          canvas.height = h;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, w, h);
+          const dataUrl = canvas.toDataURL('image/webp', 0.88);
+
+          if (targetType === 'device') {
+            document.getElementById('hero-watch-img').src = dataUrl;
+            document.getElementById('section-watch-img').src = dataUrl;
+            try { localStorage.setItem('wellage_custom_device_img', dataUrl); } catch (err) {}
+            showToast('เปลี่ยนรูปนาฬิกา/อุปกรณ์เรียบร้อยแล้ว!');
+          } else {
+            document.getElementById('ui-blueprint-img').src = dataUrl;
+            try { localStorage.setItem('wellage_custom_blueprint_img', dataUrl); } catch (err) {}
+            showToast('เปลี่ยนรูปภาพรวมหน้าจอ UI เรียบร้อยแล้ว!');
+          }
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+      event.target.value = '';
+    }
+
+    function resetCustomImages() {
+      try {
+        localStorage.removeItem('wellage_custom_device_img');
+        localStorage.removeItem('wellage_custom_blueprint_img');
+      } catch (e) {}
+      location.reload();
+    }
+
+    function exportStandaloneHtml() {
+      // Clone current DOM and bake currently visible image sources permanently into index.html for GitHub
+      const docClone = document.documentElement.cloneNode(true);
+      const heroSrc = document.getElementById('hero-watch-img').src;
+      const sectionSrc = document.getElementById('section-watch-img').src;
+      const bpSrc = document.getElementById('ui-blueprint-img').src;
+
+      const cloneHero = docClone.querySelector('#hero-watch-img');
+      const cloneSection = docClone.querySelector('#section-watch-img');
+      const cloneBp = docClone.querySelector('#ui-blueprint-img');
+
+      if (cloneHero) cloneHero.setAttribute('src', heroSrc);
+      if (cloneSection) cloneSection.setAttribute('src', sectionSrc);
+      if (cloneBp) cloneBp.setAttribute('src', bpSrc);
+
+      // Hide toast in exported file
+      const cloneToast = docClone.querySelector('#toast');
+      if (cloneToast) cloneToast.classList.remove('show');
+
+      const fullHtml = '<!DOCTYPE html>\n' + docClone.outerHTML;
+      const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'index.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast('ดาวน์โหลด index.html (ฝังรูปภาพถาวร) เรียบร้อยแล้ว!');
+    }
+
+    // 2. Smart Zero-Error Image Loader
+    function handleSmartImageFallback(imgEl, type) {
+      const fallbacks = (imgEl.dataset.fallbacks || '').split(',').filter(Boolean);
+      const tried = parseInt(imgEl.dataset.tried || '0', 10);
+      if (tried < fallbacks.length) {
+        imgEl.dataset.tried = String(tried + 1);
+        imgEl.src = fallbacks[tried];
+        return;
+      }
+      if (type === 'device') {
+        const svgDevice = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 540">
+          <defs>
+            <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#f0f9ff"/>
+              <stop offset="100%" stop-color="#bae6fd"/>
+            </linearGradient>
+            <linearGradient id="band" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#e2e8f0"/>
+              <stop offset="50%" stop-color="#ffffff"/>
+              <stop offset="100%" stop-color="#cbd5e1"/>
+            </linearGradient>
+          </defs>
+          <rect width="800" height="540" fill="url(#bg)"/>
+          <text x="400" y="95" text-anchor="middle" font-family="sans-serif" font-size="56" font-weight="700" fill="#0369a1">wellage</text>
+          <path d="M395 112 Q425 96 455 112 Q425 130 395 112 Z" fill="#38bdf8" opacity="0.7"/>
+          <path d="M180 280 C180 200, 620 200, 620 280 C620 360, 180 360, 180 280 Z" fill="none" stroke="url(#band)" stroke-width="76" stroke-linecap="round"/>
+          <rect x="345" y="218" width="110" height="124" rx="22" fill="#ffffff" stroke="#0284c7" stroke-width="4"/>
+          <circle cx="400" cy="265" r="22" fill="#e0f2fe"/>
+          <path d="M390 265 L398 273 L412 257" stroke="#0284c7" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <circle cx="382" cy="312" r="4" fill="#0ea5e9"/>
+          <circle cx="400" cy="312" r="4" fill="#0ea5e9"/>
+          <circle cx="418" cy="312" r="4" fill="#38bdf8"/>
+          <text x="400" y="455" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="600" fill="#0369a1">กดปุ่ม "เปลี่ยนรูปภาพ" ด้านบนขวาเพื่อใส่รูปของคุณ</text>
+        </svg>`;
+        imgEl.onerror = null;
+        imgEl.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgDevice);
+      } else {
+        const svgBlueprint = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+          <rect width="800" height="500" fill="#f0f9ff"/>
+          <text x="400" y="54" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="700" fill="#0369a1">Wellage 12-Screen UI System (Sky Blue &amp; White)</text>
+          ${Array.from({length: 12}).map((_, idx) => {
+            const col = idx % 6;
+            const row = Math.floor(idx / 6);
+            const x = 44 + col * 122;
+            const y = 84 + row * 195;
+            const isSos = idx === 5;
+            return `<rect x="${x}" y="${y}" width="106" height="176" rx="16" fill="${isSos ? '#dc2626' : '#ffffff'}" stroke="#7dd3fc" stroke-width="2"/>
+                    <rect x="${x+12}" y="${y+16}" width="82" height="14" rx="6" fill="${isSos ? '#fca5a5' : '#e0f2fe'}"/>
+                    <rect x="${x+12}" y="${y+42}" width="82" height="48" rx="10" fill="${isSos ? '#ef4444' : '#f0f9ff'}"/>
+                    <rect x="${x+12}" y="${y+102}" width="82" height="14" rx="6" fill="${isSos ? '#fca5a5' : '#bae6fd'}"/>
+                    <rect x="${x+12}" y="${y+124}" width="60" height="14" rx="6" fill="${isSos ? '#fca5a5' : '#e0f2fe'}"/>`;
+          }).join('')}
+        </svg>`;
+        imgEl.onerror = null;
+        imgEl.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgBlueprint);
+      }
+    }
+
+    // 3. App State & 12-Screen Interactive Logic
+    const seniors = [
+      { id: 0, name: 'คุณสมชาย', age: 82, status: 'ปกติ', statusClass: 'status-normal', battery: 78, location: 'บ้าน • อ.เมือง จ.นนทบุรี', hr: 72, bp: '118/76' },
+      { id: 1, name: 'คุณสมหญิง', age: 79, status: 'กำลังเคลื่อนที่', statusClass: 'status-moving', battery: 85, location: 'สวนสาธารณะ • นนทบุรี', hr: 78, bp: '122/78' },
+      { id: 2, name: 'คุณตาประยูร', age: 85, status: 'ออกนอกพื้นที่', statusClass: 'status-alert', battery: 64, location: 'ใกล้แยกแคราย • นนทบุรี', hr: 84, bp: '130/82' }
+    ];
+
+    let selectedSeniorIdx = 0;
+    let currentScreen = 1;
+    let currentCamera = 'ห้องนั่งเล่น';
+    let isRecording = false;
+    let notifTab = 'ทั้งหมด';
+
+    let safeZones = [
+      { name: 'บ้าน', radius: 'รัศมี 500 ม.', active: true },
+      { name: 'โรงพยาบาล', radius: 'รัศมี 1 กม.', active: true },
+      { name: 'สวนสาธารณะ', radius: 'รัศมี 200 ม.', active: true }
+    ];
+
+    let healthLogs = [
+      { time: 'วันนี้ 08:30 น.', val: '72 / 118/76' },
+      { time: 'เมื่อวาน 20:15 น.', val: '76 / 120/78' },
+      { time: 'เมื่อวาน 08:10 น.', val: '75 / 117/75' }
+    ];
+
+    const screenDescriptions = {
+      1: { title: 'หน้าจอที่ 1: หน้าหลัก (Dashboard ดูแลผู้สูงอายุ)', desc: 'แสดงโปรไฟล์ผู้สูงอายุ คุณสมชาย (อายุ 82 ปี) สถานะปกติ ระดับแบตเตอรี่ 78% พร้อมปุ่มเข้าถึง GPS, กล้องวงจรปิด, แจ้งเตือนออกนอกพื้นที่ และวัดชีพจร/ความดัน' },
+      2: { title: 'หน้าจอที่ 2: ตำแหน่งปัจจุบัน (GPS Tracking)', desc: 'แสดงพิกัดปัจจุบันบนแผนที่ อ.เมือง จ.นนทบุรี เวลาอัปเดตล่าสุด 09:42 น. พร้อมปุ่มเริ่มนำทางและแชร์ตำแหน่ง' },
+      3: { title: 'หน้าจอที่ 3: กล้องวงจรปิด (Live CCTV)', desc: 'รับชมภาพสด LIVE 09:41:32 สลับดูกล้องห้องนั่งเล่น ห้องนอน หรือหน้าบ้าน พร้อมปุ่มถ่ายภาพ บันทึกวิดีโอ และขยายภาพ' },
+      4: { title: 'หน้าจอที่ 4: แจ้งเตือนออกนอกพื้นที่ (Geofence)', desc: 'กำหนดขอบเขตพื้นที่ปลอดภัย เช่น บ้าน โรงพยาบาล สวนสาธารณะ เพิ่มพื้นที่ใหม่ และเลือกแจ้งเตือนผ่านแอปหรือ SMS / โทร' },
+      5: { title: 'หน้าจอที่ 5: วัดสุขภาพ (ชีพจร / ความดัน)', desc: 'แสดงค่าชีพจร 72 ครั้ง/นาที และความดัน 118/76 มม.ปรอท พร้อมปุ่มบันทึกค่าสุขภาพและประวัติย้อนหลัง' },
+      6: { title: 'หน้าจอที่ 6: แจ้งเตือนเหตุฉุกเฉิน (Emergency SOS)', desc: 'แจ้งเตือนทันทีเมื่อตรวจพบการล้ม (คุณสมชาย เกิดการล้ม เวลา 09:42 น.) พร้อมปุ่มโทรโรงพยาบาลและดูตำแหน่งปัจจุบันทันที' },
+      7: { title: 'หน้าจอที่ 7: เมนูเพิ่มเติม (All Modules)', desc: 'ศูนย์รวมเมนูทั้งหมด 7 ระบบในแอป Wellage เข้าถึงทุกฟีเจอร์ได้ในคลิกเดียว' },
+      8: { title: 'หน้าจอที่ 8: โรงพยาบาลใกล้เคียง (Nearby Hospitals)', desc: 'แสดงโรงพยาบาลกรุงเทพ นนทบุรี (2.4 กม.) รพ.พระนั่งเกล้า (4.1 กม.) และ รพ.นนทเวช (5.8 กม.) พร้อมปุ่มโทรออกและเปิดเส้นทาง' },
+      9: { title: 'หน้าจอที่ 9: ตั้งค่าการแจ้งเตือน (Notification Settings)', desc: 'เปิด-ปิดการแจ้งเตือนออกนอกพื้นที่ ควบคุมน้ำหนัก การล้ม/กระแทก และค่าชีพจร/ความดันผิดปกติ' },
+      10: { title: 'หน้าจอที่ 10: แจ้งเตือนถอดอุปกรณ์ (Device Removed)', desc: 'ตรวจพบการถอดอุปกรณ์สวมใส่ออก เวลา 09:40 น. ณ ตำแหน่งล่าสุด: บ้าน พร้อมปุ่มโทรหาผู้ใช้งานและดูวิธีแก้ไข' },
+      11: { title: 'หน้าจอที่ 11: ประวัติการแจ้งเตือน (Notifications History)', desc: 'กรองดูรายการแจ้งเตือนแยกตามหมวดหมู่ ทั้งหมด เหตุฉุกเฉิน และระบบ' },
+      12: { title: 'หน้าจอที่ 12: ดูแลหลายคน (Multi-Person Care)', desc: 'บริหารจัดการผู้สูงอายุหลายท่านพร้อมกัน (คุณสมชาย, คุณสมหญิง, คุณตาประยูร) พร้อมปุ่มลัดเข้าดูตำแหน่ง CCTV สุขภาพ และแจ้งเตือน' }
+    };
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+    }
+
+    function selectSenior(idx) {
+      selectedSeniorIdx = idx;
+      renderScreen();
+      showToast(`สลับการดูแลไปยัง ${seniors[idx].name} แล้ว`);
+    }
+
+    function switchScreen(num) {
+      currentScreen = num;
+      document.querySelectorAll('.screen-pill').forEach((btn, i) => {
+        btn.classList.toggle('active', i + 1 === num);
+      });
+      const info = screenDescriptions[num];
+      if (info) {
+        document.getElementById('active-screen-info').innerHTML = `<h4>${info.title}</h4><p>${info.desc}</p>`;
+      }
+      renderScreen();
+    }
+
+    function getSeniorAvatarSVG(idx) {
+      const colors = ['#0284c7', '#0ea5e9', '#0369a1'];
+      const c = colors[idx % colors.length];
+      return `<svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+        <circle cx="24" cy="24" r="24" fill="#e0f2fe"/>
+        <circle cx="24" cy="18" r="8" fill="${c}"/>
+        <path d="M10 41C10 33.5 16.2 29 24 29C31.8 29 38 33.5 38 41" fill="${c}"/>
+      </svg>`;
+    }
+
+    function renderScreen() {
+      const s = seniors[selectedSeniorIdx];
+      const screen = document.getElementById('phone-screen');
+      const statusBar = document.getElementById('phone-status-bar');
+      const bottomNav = document.getElementById('app-bottom-nav');
+
+      screen.classList.toggle('sos-mode', currentScreen === 6);
+      statusBar.style.background = currentScreen === 6 ? '#dc2626' : 'transparent';
+      statusBar.style.color = currentScreen === 6 ? '#ffffff' : '#334155';
+      bottomNav.style.display = currentScreen === 6 ? 'none' : 'grid';
+
+      const tabs = bottomNav.querySelectorAll('.bottom-tab');
+      tabs.forEach(t => t.classList.remove('active'));
+      if (currentScreen === 1) tabs[0].classList.add('active');
+      else if (currentScreen === 11) tabs[1].classList.add('active');
+      else if (currentScreen === 9) tabs[2].classList.add('active');
+      else tabs[3].classList.add('active');
+
+      if (currentScreen === 1) {
+        screen.innerHTML = `
+          <div class="app-topbar">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div style="width:30px;height:30px;border-radius:10px;background:#e0f2fe;color:#0284c7;display:flex;align-items:center;justify-content:center;font-weight:700;">♥</div>
+              <strong style="color:#0c4a6e;font-size:1.05rem;">Wellage</strong>
+            </div>
+            <button class="bell-btn" onclick="switchScreen(11)" title="การแจ้งเตือน">
+              🔔
+              <span class="bell-badge">3</span>
+            </button>
+          </div>
+
+          <div class="senior-card">
+            <div class="senior-row">
+              <div class="senior-avatar">${getSeniorAvatarSVG(s.id)}</div>
+              <div style="flex:1;">
+                <div style="display:flex;align-items:center;justify-content:space-between;">
+                  <strong style="font-size:0.96rem;color:#0f172a;">${s.name}</strong>
+                  <span class="status-chip ${s.statusClass}">● ${s.status}</span>
+                </div>
+                <span style="font-size:0.78rem;color:#64748b;">อายุ ${s.age} ปี • ${s.location}</span>
+              </div>
+            </div>
+            <div class="battery-row">
+              <span>🔋 แบตเตอรี่ ${s.battery}%</span>
+              <div class="battery-bar"><div class="battery-fill" style="width:${s.battery}%"></div></div>
+            </div>
+          </div>
+
+          <div class="quick-grid">
+            <div class="quick-tile" onclick="switchScreen(2)">
+              <div class="tile-icon">📍</div>
+              <h4>ตำแหน่ง GPS</h4>
+              <span>พิกัดปัจจุบัน</span>
+            </div>
+            <div class="quick-tile" onclick="switchScreen(3)">
+              <div class="tile-icon">📷</div>
+              <h4>กล้องวงจรปิด</h4>
+              <span>ดูภาพสด CCTV</span>
+            </div>
+            <div class="quick-tile" onclick="switchScreen(4)">
+              <div class="tile-icon">🛡️</div>
+              <h4>แจ้งเตือนออกนอกพื้นที่</h4>
+              <span>พื้นที่ปลอดภัย</span>
+            </div>
+            <div class="quick-tile" onclick="switchScreen(5)">
+              <div class="tile-icon">❤️</div>
+              <h4>สุขภาพ</h4>
+              <span>ชีพจร / ความดัน</span>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <button class="mini-btn-outline" onclick="switchScreen(6)" style="border-color:#fecaca;color:#dc2626;background:#fef2f2;">
+              🚨 ทดสอบ SOS
+            </button>
+            <button class="mini-btn-outline" onclick="switchScreen(12)">
+              👨‍👩‍👧‍👦 ดูแลหลายคน
+            </button>
+          </div>
+        `;
+      } else if (currentScreen === 2) {
+        screen.innerHTML = `
+          <div class="app-topbar">
+            <button class="app-back-btn" onclick="switchScreen(1)">‹</button>
+            <span class="app-screen-title">ตำแหน่งปัจจุบัน</span>
+            <span style="width:32px;"></span>
+          </div>
+          <div style="position:relative;height:260px;border-radius:20px;background:linear-gradient(135deg,#e0f2fe,#bae6fd);border:1px solid #7dd3fc;overflow:hidden;margin-bottom:12px;">
+            <svg width="100%" height="100%" viewBox="0 0 320 260">
+              <path d="M0 70 L320 110 M40 0 L120 260 M210 0 L180 260 M0 195 L320 165" stroke="#ffffff" stroke-width="10"/>
+              <circle cx="160" cy="130" r="56" fill="#0ea5e9" fill-opacity="0.16" stroke="#0284c7" stroke-dasharray="4 4"/>
+              <circle cx="160" cy="130" r="22" fill="#0284c7"/>
+              <text x="160" y="135" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="bold">GPS</text>
+            </svg>
+            <div style="position:absolute;top:12px;left:12px;background:#ffffff;padding:5px 10px;border-radius:10px;font-size:0.72rem;font-weight:600;color:#0369a1;">
+              ● สัญญาณ GPS ปกติ
+            </div>
+          </div>
+          <div class="mini-card">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+              <div class="senior-avatar" style="width:42px;height:42px;">${getSeniorAvatarSVG(s.id)}</div>
+              <div>
+                <strong style="font-size:0.9rem;color:#0f172a;">${s.name}</strong>
+                <div style="font-size:0.74rem;color:#64748b;">อยู่: ${s.location}</div>
+                <div style="font-size:0.7rem;color:#0284c7;">อัปเดตล่าสุด 09:42 น. • แบตเตอรี่ ${s.battery}%</div>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;">
+              <button class="mini-btn" onclick="showToast('กำลังเปิดเส้นทางนำทางไปยัง ${s.name}')">🧭 เริ่มนำทาง</button>
+              <button class="mini-btn-outline" onclick="showToast('คัดลอกลิงก์แชร์ตำแหน่งเรียบร้อย')">🔗 แชร์ตำแหน่ง</button>
+            </div>
+          </div>
+        `;
+      } else if (currentScreen === 3) {
+        screen.innerHTML = `
+          <div class="app-topbar">
+            <button class="app-back-btn" onclick="switchScreen(1)">‹</button>
+            <span class="app-screen-title">กล้องวงจรปิด</span>
+            <span style="width:32px;"></span>
+          </div>
+          <div style="position:relative;height:185px;border-radius:18px;background:linear-gradient(135deg,#0c4a6e,#0284c7);color:#fff;padding:12px;display:flex;flex-direction:column;justify-content:space-between;margin-bottom:12px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span style="background:#ef4444;padding:2px 9px;border-radius:999px;font-size:0.68rem;font-weight:700;">● LIVE 09:41:32</span>
+              <span style="font-size:0.72rem;background:rgba(255,255,255,0.2);padding:2px 8px;border-radius:8px;">${currentCamera}</span>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-size:2rem;">🛋️👴📖</div>
+              <div style="font-size:0.76rem;color:#e0f2fe;">${s.name} กำลังพักผ่อนอยู่ที่${currentCamera}</div>
+            </div>
+            <div style="font-size:0.68rem;color:#bae6fd;text-align:right;">HD 1080p • เสียงปกติ</div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px;">
+            <button class="mini-btn-outline" onclick="showToast('บันทึกภาพหน้าจอลงอัลบั้มแล้ว')">📸 ถ่ายภาพ</button>
+            <button class="mini-btn-outline" onclick="isRecording=!isRecording; renderScreen(); showToast(isRecording?'เริ่มบันทึกวิดีโอ':'หยุดบันทึกวิดีโอ')">${isRecording ? '⏹️ หยุดอัด' : '🎥 บันทึกวิดีโอ'}</button>
+            <button class="mini-btn-outline" onclick="showToast('เปิดโหมดขยายภาพเต็มจอ')">⛶ ขยายภาพ</button>
+          </div>
+          <strong style="font-size:0.82rem;color:#0c4a6e;display:block;margin-bottom:6px;">เลือกกล้องอื่น</strong>
+          ${['ห้องนั่งเล่น', 'ห้องนอน', 'หน้าบ้าน'].map(room => `
+            <div class="mini-card" style="display:flex;justify-content:space-between;align-items:center;cursor:pointer;${currentCamera===room?'border-color:#0284c7;background:#f0f9ff;':''}" onclick="currentCamera='${room}';renderScreen();">
+              <span style="font-size:0.82rem;font-weight:600;">🏠 ${room}</span>
+              <span style="font-size:0.75rem;color:#0284c7;">${currentCamera===room?'กำลังดู ›':'เลือก ›'}</span>
+            </div>
+          `).join('')}
+        `;
+      } else if (currentScreen === 4) {
+        screen.innerHTML = `
+          <div class="app-topbar">
+            <button class="app-back-btn" onclick="switchScreen(1)">‹</button>
+            <span class="app-screen-title">แจ้งเตือนออกนอกพื้นที่</span>
+            <span style="width:32px;"></span>
+          </div>
+          <div class="mini-card" style="display:flex;justify-content:space-between;align-items:center;">
+            <div>
+              <strong style="font-size:0.84rem;">เปิดการแจ้งเตือน</strong>
+              <div style="font-size:0.7rem;color:#64748b;">แจ้งเตือนทันทีเมื่อออกนอกเขตปลอดภัย</div>
+            </div>
+            <div class="toggle-switch on" onclick="this.classList.toggle('on')"></div>
+          </div>
+          <strong style="font-size:0.8rem;color:#0c4a6e;margin:6px 0;display:block;">กำหนดพื้นที่ปลอดภัย</strong>
+          ${safeZones.map((z, idx) => `
+            <div class="mini-card" style="display:flex;justify-content:space-between;align-items:center;">
+              <div>
+                <strong style="font-size:0.82rem;">📍 ${z.name}</strong>
+                <div style="font-size:0.7rem;color:#64748b;">${z.radius}</div>
+              </div>
+              <span class="status-chip status-normal" style="cursor:pointer;" onclick="safeZones[${idx}].active=!safeZones[${idx}].active;renderScreen();">
+                ${z.active ? 'ใช้งาน' : 'ปิด'}
+              </span>
+            </div>
+          `).join('')}
+          <button class="mini-btn" style="margin-bottom:10px;" onclick="safeZones.push({name:'คลินิกใกล้บ้าน',radius:'รัศมี 300 ม.',active:true});renderScreen();showToast('เพิ่มพื้นที่ปลอดภัยใหม่แล้ว')">+ เพิ่มพื้นที่</button>
+          <div class="mini-card" style="display:flex;justify-content:space-between;font-size:0.76rem;color:#0369a1;font-weight:600;">
+            <span>🔔 แจ้งเตือนผ่านแอป</span>
+            <span>📱 SMS / โทร</span>
+          </div>
+        `;
+      } else if (currentScreen === 5) {
+        screen.innerHTML = `
+          <div class="app-topbar">
+            <button class="app-back-btn" onclick="switchScreen(1)">‹</button>
+            <span class="app-screen-title">วัดสุขภาพ</span>
+            <span style="width:32px;"></span>
+          </div>
+          <div class="mini-card">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div>
+                <span style="font-size:0.75rem;color:#64748b;">❤️ ชีพจร</span>
+                <div style="font-size:1.35rem;font-weight:700;color:#0284c7;">${s.hr} <span style="font-size:0.78rem;font-weight:500;">ครั้ง/นาที</span></div>
+              </div>
+              <svg width="95" height="36" viewBox="0 0 100 36">
+                <polyline fill="none" stroke="#0ea5e9" stroke-width="2.5" points="0,20 20,20 28,6 36,32 44,12 52,20 100,20"/>
+              </svg>
+            </div>
+          </div>
+          <div class="mini-card">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div>
+                <span style="font-size:0.75rem;color:#64748b;">🩺 ความดันโลหิต</span>
+                <div style="font-size:1.35rem;font-weight:700;color:#0369a1;">${s.bp} <span style="font-size:0.74rem;font-weight:500;">มม.ปรอท</span></div>
+              </div>
+              <span class="status-chip status-normal">ปกติ</span>
+            </div>
+          </div>
+          <button class="mini-btn" style="margin-bottom:12px;" onclick="healthLogs.unshift({time:'เมื่อสักครู่',val:'${s.hr} / ${s.bp}'});renderScreen();showToast('บันทึกค่าสุขภาพเรียบร้อย')">+ บันทึกสุขภาพ</button>
+          <strong style="font-size:0.8rem;color:#0c4a6e;display:block;margin-bottom:6px;">ประวัติล่าสุด</strong>
+          ${healthLogs.slice(0,3).map(h => `
+            <div class="mini-card" style="display:flex;justify-content:space-between;font-size:0.78rem;padding:9px 12px;">
+              <span style="color:#64748b;">${h.time}</span>
+              <strong style="color:#0369a1;">${h.val}</strong>
+            </div>
+          `).join('')}
+        `;
+      } else if (currentScreen === 6) {
+        screen.innerHTML = `
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+            <button onclick="switchScreen(1)" style="background:rgba(255,255,255,0.2);border:none;color:#fff;width:32px;height:32px;border-radius:10px;cursor:pointer;">✕</button>
+            <span style="font-size:0.8rem;font-weight:600;">EMERGENCY SOS</span>
+            <span style="width:32px;"></span>
+          </div>
+          <div style="text-align:center;margin:10px 0 18px;">
+            <div style="width:74px;height:74px;margin:0 auto 12px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:2.2rem;">🚨</div>
+            <h3 style="font-size:1.35rem;font-weight:700;">แจ้งเตือนเหตุฉุกเฉิน</h3>
+          </div>
+          <div style="background:#ffffff;color:#0f172a;border-radius:18px;padding:14px;display:flex;align-items:center;gap:12px;margin-bottom:18px;">
+            <div class="senior-avatar">${getSeniorAvatarSVG(s.id)}</div>
+            <div>
+              <strong style="font-size:0.98rem;">${s.name}</strong>
+              <div style="color:#dc2626;font-weight:700;font-size:0.86rem;">ตรวจพบการล้ม!</div>
+              <div style="font-size:0.74rem;color:#64748b;">เวลา 09:42 น. • ${s.location}</div>
+            </div>
+          </div>
+          <button onclick="showToast('กำลังโทรออกไปยังศูนย์ฉุกเฉินโรงพยาบาล...')" style="width:100%;padding:13px;border-radius:14px;border:none;background:#ffffff;color:#dc2626;font-family:inherit;font-weight:700;font-size:0.9rem;margin-bottom:10px;cursor:pointer;">
+            📞 โทรโรงพยาบาล
+          </button>
+          <button onclick="switchScreen(2)" style="width:100%;padding:12px;border-radius:14px;border:1.5px solid rgba(255,255,255,0.6);background:rgba(255,255,255,0.14);color:#ffffff;font-family:inherit;font-weight:600;font-size:0.86rem;margin-bottom:10px;cursor:pointer;">
+            📍 ดูตำแหน่งปัจจุบัน
+          </button>
+          <button onclick="switchScreen(1);showToast('ปิดการแจ้งเตือนฉุกเฉินแล้ว')" style="width:100%;padding:10px;border-radius:14px;border:none;background:transparent;color:#fee2e2;font-family:inherit;font-size:0.82rem;cursor:pointer;">
+            ✕ ปิดการแจ้งเตือน
+          </button>
+        `;
+      } else if (currentScreen === 7) {
+        const items = [
+          { icon: '📍', label: 'ติดตามตำแหน่ง GPS', target: 2 },
+          { icon: '📷', label: 'กล้องวงจรปิด (CCTV)', target: 3 },
+          { icon: '🛡️', label: 'แจ้งเตือนออกนอกพื้นที่', target: 4 },
+          { icon: '❤️', label: 'ดูแลสุขภาพ (ชีพจร / ความดัน)', target: 5 },
+          { icon: '🚨', label: 'แจ้งเตือนเหตุฉุกเฉิน', target: 6 },
+          { icon: '🏥', label: 'โรงพยาบาลใกล้เคียง', target: 8 },
+          { icon: '👨‍👩‍👧‍👦', label: 'ดูแลหลายคน (ผู้สูงอายุหลายท่าน)', target: 12 }
+        ];
+        screen.innerHTML = `
+          <div class="app-topbar">
+            <button class="app-back-btn" onclick="switchScreen(1)">‹</button>
+            <span class="app-screen-title">เมนูเพิ่มเติม</span>
+            <span style="width:32px;"></span>
+          </div>
+          ${items.map(it => `
+            <div class="mini-card" onclick="switchScreen(${it.target})" style="display:flex;justify-content:space-between;align-items:center;cursor:pointer;padding:11px 14px;">
+              <span style="font-size:0.82rem;font-weight:600;color:#0c4a6e;">${it.icon} ${it.label}</span>
+              <span style="color:#0284c7;font-weight:700;">›</span>
+            </div>
+          `).join('')}
+        `;
+      } else if (currentScreen === 8) {
+        screen.innerHTML = `
+          <div class="app-topbar">
+            <button class="app-back-btn" onclick="switchScreen(7)">‹</button>
+            <span class="app-screen-title">โรงพยาบาลใกล้เคียง</span>
+            <span style="width:32px;"></span>
+          </div>
+          <div class="mini-card">
+            <div style="height:82px;border-radius:12px;background:linear-gradient(135deg,#bae6fd,#e0f2fe);display:flex;align-items:center;justify-content:center;font-size:2rem;margin-bottom:8px;">🏥</div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <div>
+                <strong style="font-size:0.88rem;color:#0c4a6e;">โรงพยาบาลกรุงเทพ นนทบุรี</strong>
+                <div style="font-size:0.72rem;color:#64748b;">ฉุกเฉิน 24 ชั่วโมง</div>
+              </div>
+              <span class="status-chip status-normal">2.4 กม.</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+              <button class="mini-btn" onclick="showToast('โทรออก 02-xxx-xxxx')">📞 โทร 02-xxx-xxxx</button>
+              <button class="mini-btn-outline" onclick="showToast('เปิดแผนที่นำทางไป รพ.กรุงเทพ นนทบุรี')">🧭 เปิดเส้นทาง</button>
+            </div>
+          </div>
+          <strong style="font-size:0.8rem;color:#0c4a6e;display:block;margin:8px 0 6px;">โรงพยาบาลอื่น ๆ ใกล้เคียง</strong>
+          <div class="mini-card" style="display:flex;justify-content:space-between;align-items:center;">
+            <div>
+              <strong style="font-size:0.82rem;">รพ.พระนั่งเกล้า</strong>
+              <div style="font-size:0.7rem;color:#64748b;">โทร 02-xxx-xxxx</div>
+            </div>
+            <span style="font-size:0.76rem;color:#0284c7;font-weight:700;">4.1 กม.</span>
+          </div>
+          <div class="mini-card" style="display:flex;justify-content:space-between;align-items:center;">
+            <div>
+              <strong style="font-size:0.82rem;">รพ.นนทเวช</strong>
+              <div style="font-size:0.7rem;color:#64748b;">โทร 02-xxx-xxxx</div>
+            </div>
+            <span style="font-size:0.76rem;color:#0284c7;font-weight:700;">5.8 กม.</span>
+          </div>
+        `;
+      } else if (currentScreen === 9) {
+        const settings = [
+          { title: 'ออกนอกพื้นที่', sub: 'แจ้งเตือนเมื่อออกนอกรัศมีปลอดภัย', on: true },
+          { title: 'ควบคุมน้ำหนัก', sub: 'แจ้งเตือนบันทึกน้ำหนักประจำสัปดาห์', on: false },
+          { title: 'การล้ม / กระแทก', sub: 'แจ้งเตือนฉุกเฉินทันที (เปิดแล้ว)', on: true },
+          { title: 'ค่าชีพจร / ความดันผิดปกติ', sub: 'แจ้งเตือนเมื่อค่าสูงหรือต่ำกว่าเกณฑ์', on: true }
+        ];
+        screen.innerHTML = `
+          <div class="app-topbar">
+            <button class="app-back-btn" onclick="switchScreen(1)">‹</button>
+            <span class="app-screen-title">ตั้งค่าการแจ้งเตือน</span>
+            <span style="width:32px;"></span>
+          </div>
+          ${settings.map(st => `
+            <div class="mini-card" style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
+              <div>
+                <strong style="font-size:0.84rem;color:#0f172a;">${st.title}</strong>
+                <div style="font-size:0.7rem;color:#64748b;">${st.sub}</div>
+              </div>
+              <div class="toggle-switch ${st.on ? 'on' : ''}" onclick="this.classList.toggle('on')"></div>
+            </div>
+          `).join('')}
+        `;
+      } else if (currentScreen === 10) {
+        screen.innerHTML = `
+          <div class="app-topbar">
+            <button class="app-back-btn" onclick="switchScreen(1)">‹</button>
+            <span class="app-screen-title">แจ้งเตือนถอดอุปกรณ์</span>
+            <span style="width:32px;"></span>
+          </div>
+          <div class="mini-card" style="text-align:center;padding:18px 14px;border-color:#bae6fd;background:#f0f9ff;">
+            <div style="width:64px;height:64px;margin:0 auto 10px;border-radius:20px;background:#ffffff;border:2px solid #0284c7;display:flex;align-items:center;justify-content:center;font-size:1.9rem;position:relative;">
+              ⌚
+              <span style="position:absolute;top:-6px;right:-6px;width:22px;height:22px;border-radius:50%;background:#ef4444;color:#fff;font-size:0.75rem;font-weight:700;display:flex;align-items:center;justify-content:center;">!</span>
+            </div>
+            <strong style="font-size:0.96rem;color:#dc2626;display:block;margin-bottom:6px;">ตรวจพบการถอดอุปกรณ์!</strong>
+            <p style="font-size:0.78rem;color:#334155;">${s.name} ถอดอุปกรณ์ออก เวลา 09:40 น.<br/>ตำแหน่งล่าสุด: บ้าน</p>
+          </div>
+          <button class="mini-btn" style="margin-bottom:8px;" onclick="showToast('กำลังโทรหา ${s.name}...')">📞 โทรหาผู้ใช้งาน</button>
+          <button class="mini-btn-outline" onclick="showToast('แนะนำ: ตรวจสอบสายรัดและแบตเตอรี่อุปกรณ์')">ℹ️ ดูวิธีแก้ไข</button>
+        `;
+      } else if (currentScreen === 11) {
+        const logs = [
+          { type: 'เหตุฉุกเฉิน', title: 'การล้ม / กระแทก', desc: `${s.name} • เหตุฉุกเฉิน`, time: '09:42 น.', color: '#dc2626' },
+          { type: 'ระบบ', title: 'ถอดอุปกรณ์', desc: `${s.name} ถอดอุปกรณ์ออก`, time: '09:40 น.', color: '#0284c7' },
+          { type: 'เหตุฉุกเฉิน', title: 'ออกนอกพื้นที่', desc: 'ออกนอกรัศมีบ้าน', time: '08:25 น.', color: '#d97706' },
+          { type: 'ระบบ', title: 'ค่าชีพจร / ความดัน', desc: 'บันทึกค่าสุขภาพปกติ', time: '08:15 น.', color: '#0ea5e9' }
+        ].filter(l => notifTab === 'ทั้งหมด' || l.type === notifTab);
+
+        screen.innerHTML = `
+          <div class="app-topbar">
+            <button class="app-back-btn" onclick="switchScreen(1)">‹</button>
+            <span class="app-screen-title">การแจ้งเตือน</span>
+            <span style="width:32px;"></span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:12px;">
+            ${['ทั้งหมด', 'เหตุฉุกเฉิน', 'ระบบ'].map(tab => `
+              <button onclick="notifTab='${tab}';renderScreen();" style="padding:6px;border-radius:10px;border:1px solid #bae6fd;background:${notifTab===tab?'#0284c7':'#ffffff'};color:${notifTab===tab?'#ffffff':'#0369a1'};font-family:inherit;font-size:0.74rem;font-weight:600;cursor:pointer;">
+                ${tab}
+              </button>
+            `).join('')}
+          </div>
+          ${logs.map(l => `
+            <div class="mini-card" style="display:flex;justify-content:space-between;align-items:center;">
+              <div>
+                <strong style="font-size:0.82rem;color:${l.color};">● ${l.title}</strong>
+                <div style="font-size:0.72rem;color:#64748b;">${l.desc}</div>
+              </div>
+              <span style="font-size:0.7rem;color:#94a3b8;">${l.time}</span>
+            </div>
+          `).join('')}
+        `;
+      } else if (currentScreen === 12) {
+        screen.innerHTML = `
+          <div class="app-topbar">
+            <button class="app-back-btn" onclick="switchScreen(1)">‹</button>
+            <span class="app-screen-title">ดูแลหลายคน</span>
+            <button onclick="showToast('เปิดหน้าเพิ่มผู้สูงอายุในความดูแล')" style="border:none;background:#0284c7;color:#fff;padding:4px 10px;border-radius:999px;font-size:0.7rem;font-weight:600;cursor:pointer;">+ เพิ่ม</button>
+          </div>
+          ${seniors.map((person, idx) => `
+            <div class="mini-card" style="${idx===selectedSeniorIdx?'border-color:#0284c7;background:#f0f9ff;':''}">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;cursor:pointer;" onclick="selectSenior(${idx})">
+                <div class="senior-avatar" style="width:40px;height:40px;">${getSeniorAvatarSVG(idx)}</div>
+                <div style="flex:1;">
+                  <div style="display:flex;justify-content:space-between;align-items:center;">
+                    <strong style="font-size:0.85rem;">${person.name}</strong>
+                    <span class="status-chip ${person.statusClass}">${person.status}</span>
+                  </div>
+                  <span style="font-size:0.72rem;color:#64748b;">อายุ ${person.age} ปี</span>
+                </div>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;border-top:1px solid #e0f2fe;padding-top:7px;">
+                <button onclick="selectedSeniorIdx=${idx};switchScreen(2)" style="border:none;background:none;font-size:0.68rem;color:#0369a1;cursor:pointer;">📍 ตำแหน่ง</button>
+                <button onclick="selectedSeniorIdx=${idx};switchScreen(3)" style="border:none;background:none;font-size:0.68rem;color:#0369a1;cursor:pointer;">📷 CCTV</button>
+                <button onclick="selectedSeniorIdx=${idx};switchScreen(5)" style="border:none;background:none;font-size:0.68rem;color:#0369a1;cursor:pointer;">❤️ สุขภาพ</button>
+                <button onclick="selectedSeniorIdx=${idx};switchScreen(11)" style="border:none;background:none;font-size:0.68rem;color:#0369a1;cursor:pointer;">🔔 แจ้งเตือน</button>
+              </div>
+            </div>
+          `).join('')}
+        `;
+      }
+    }
+
+    applySavedImages();
+    renderScreen();
+  </script>
+</body>
+</html>
